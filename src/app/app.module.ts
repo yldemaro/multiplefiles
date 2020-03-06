@@ -12,8 +12,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 // Replace configPlaceholder with your firebase credentials
 import { DropzoneDirective } from './dropzone.directive';
 import { UploaderComponent } from './uploader/uploader.component';
-import { UploadTaskComponent } from './upload-task/upload-task.component';
 import { environment } from 'src/environments/environment';
+import { UploadTaskComponent } from './upload-task/upload-task.component';
 
 @NgModule({
   declarations: [AppComponent, DropzoneDirective, UploaderComponent, UploadTaskComponent],

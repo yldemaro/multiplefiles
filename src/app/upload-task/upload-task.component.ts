@@ -29,6 +29,8 @@ export class UploadTaskComponent implements OnInit {
 
   startUpload() {
 
+    console.log(this.file.name);
+
     // The storage path
     const path = `test/${Date.now()}_${this.file.name}`;
 
@@ -36,6 +38,7 @@ export class UploadTaskComponent implements OnInit {
     const ref = this.storage.ref(path);
 
     // The main task
+    console.log(this.file);
     this.task = this.storage.upload(path, this.file);
 
     // Progress monitoring
@@ -46,8 +49,10 @@ export class UploadTaskComponent implements OnInit {
       // The file's download URL
       finalize(async () => {
         this.downloadURL = await ref.getDownloadURL().toPromise();
+        console.log(this.downloadURL);
         localStorage.setItem('url', this.downloadURL);
         this.getUrl();
+        console.log(path);
         this.db.collection('files').add({ downloadURL: this.downloadURL, path });
       }),
     );
@@ -67,13 +72,6 @@ export class UploadTaskComponent implements OnInit {
 
 
     console.log(this.prueba);
-
-
-    // for (let i = 0; i < this.prueba.length; i++) {
-    //   console.log(this.prueba[i]);
-    // }
-
-
   }
 
 
